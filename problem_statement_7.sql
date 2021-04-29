@@ -28,3 +28,12 @@ select *,
 avg(Salary) over( partition by DeptID )  as avg_salary
 from emp
 )select *from selected_emp where Salary>avg_salary;
+
+#without with partition and with clause:
+
+select * from emp 
+join 
+( select DeptID, avg(Salary) as avg_salary from emp group by DeptID
+) as emp2
+on emp2.DeptID = emp.DeptID
+where emp.salary >avg_salary;
