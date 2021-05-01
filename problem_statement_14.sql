@@ -19,6 +19,6 @@ WHERE NOT EXISTS (
 
 SELECT serA.el AS prime
 FROM generate_series(2, 100) serA(el)
-LEFT JOIN generate_series(2, 100) serB(el) ON serA.el >= POWER(serB.el, 2)
+LEFT JOIN generate_series(2, 100) serB(el) ON serA.c >= POWER(serB.el, 2)
                                               AND serA.el % serB.el = 0
 WHERE serB.el IS NULL
